@@ -20,7 +20,15 @@ inherited ViewCadastroNCM: TViewCadastroNCM
     Width = 99
     Height = 15
     Caption = 'Descri'#231#227'o do NCM'
+    Color = clRed
     FocusControl = DBEdit2
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
   end
   object Label3: TLabel [2]
     Left = 28
@@ -158,11 +166,14 @@ inherited ViewCadastroNCM: TViewCadastroNCM
   end
   inherited pnlTopo: TPanel
     Width = 676
+    ExplicitWidth = 676
     inherited pnlBtnFechar: TPanel
       Left = 600
+      ExplicitLeft = 600
     end
     inherited pnlDadosTitulo: TPanel
       Width = 600
+      ExplicitWidth = 600
       inherited pnlInfoTitulo: TPanel
         Width = 169
         ExplicitWidth = 169
@@ -176,16 +187,21 @@ inherited ViewCadastroNCM: TViewCadastroNCM
     end
     inherited pnlLineTitulo: TPanel
       Width = 676
+      ExplicitWidth = 676
     end
   end
   inherited pnlRodapeCadastro: TPanel
     Top = 376
     Width = 676
+    ExplicitTop = 376
+    ExplicitWidth = 676
     inherited pnlBtnCancelar: TPanel
       Left = 408
+      ExplicitLeft = 408
     end
     inherited pnlBtnSalvar: TPanel
       Left = 533
+      ExplicitLeft = 533
       inherited btnSalvar: TSpeedButton
         OnClick = btnSalvarClick
       end
