@@ -1,0 +1,143 @@
+unit view.tdi.lista.produtos;
+
+interface
+
+uses
+  DBAxisGridsEh,
+  DBGridEh,
+  DBGridEhGrouping,
+  DBGridEhToolCtrls,
+  DynVarsEh,
+  EhLibVCL,
+  GridsEh,
+  JvExMask,
+  JvToolEdit,
+  ToolCtrlsEh,
+  acPNG,
+
+  Data.DB,
+
+  System.Actions,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.ActnList,
+  Vcl.Buttons,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+  Vcl.WinXPanels,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  view.modal.cadastro.produtos,
+  view.tdi.base.listas,
+  view.telaFundo;
+
+type
+  TViewListaProdutosTDI = class(TViewBaseListasTDI)
+    pnlFilial: TPanel;
+    DS_DetalheItens: TDataSource;
+    pnlInfoDetalhe: TPanel;
+    DBG_DetalheItem: TDBGridEh;
+    pnlTituloDetalhe: TPanel;
+    lblTituloDetalheItens: TLabel;
+    pnlInfoDetalheProduto: TPanel;
+    pnlColorTit: TPanel;
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure DS_DadosDataChange(Sender: TObject; Field: TField);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewListaProdutosTDI: TViewListaProdutosTDI;
+
+implementation
+
+{$R *.dfm}
+
+procedure TViewListaProdutosTDI.btnEditarClick(Sender: TObject);
+//var
+//  TelaFundo: TViewTelaFundo;
+begin //editar
+  inherited;
+
+  ViewCadastroProdutos := TViewCadastroProdutos.Create(Self);
+  try
+
+//    TelaFundo := TViewTelaFundo.Create(Self);
+//    TelaFundo.Show;
+
+    ViewCadastroProdutos.IdPesquisa := FService.QRY_ProdutosIDPRODUTO.AsInteger;
+    ViewCadastroProdutos.Operacao   := 'Editar';
+    ViewCadastroProdutos.ShowModal;
+
+  finally
+//    TelaFundo.Hide;
+//    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewCadastroProdutos);
+
+    FService.GET_Produtos(0);
+
+  end;
+end;
+
+procedure TViewListaProdutosTDI.btnNovoClick(Sender: TObject);
+//var
+//  TelaFundo: TViewTelaFundo;
+begin //novo
+  inherited;
+
+  ViewCadastroProdutos := TViewCadastroProdutos.Create(Self);
+  try
+
+//    TelaFundo := TViewTelaFundo.Create(Self);
+//    TelaFundo.Show;
+
+    ViewCadastroProdutos.Operacao   := 'Inserir';
+    ViewCadastroProdutos.ShowModal;
+
+  finally
+//    TelaFundo.Hide;
+//    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewCadastroProdutos);
+
+    FService.GET_Produtos(0);
+
+  end;
+
+end;
+
+procedure TViewListaProdutosTDI.DS_DadosDataChange(Sender: TObject; Field: TField);
+begin // pesquisa o detalhe
+  inherited;
+  DS_DetalheItens.DataSet := FService.QRY_ProdutoItens;
+  FService.GET_ProdutosItens(FService.QRY_ProdutosIDPRODUTO.AsInteger);
+end;
+
+procedure TViewListaProdutosTDI.FormCreate(Sender: TObject);
+begin// create
+  inherited;
+  ViewListaProdutosTDI := Self;
+  DS_Dados.DataSet := FService.QRY_Produtos;
+end;
+
+procedure TViewListaProdutosTDI.FormShow(Sender: TObject);
+begin// show
+  inherited;
+  FService.GET_Produtos;
+end;
+
+end.

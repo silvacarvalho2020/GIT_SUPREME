@@ -1,0 +1,173 @@
+unit view.modal.cadastro.filial;
+
+interface
+
+uses
+  AdvCombo,
+  AdvDBComboBox,
+  DBCtrlsEh,
+  DBGridEh,
+  DBLookupEh,
+  JvDBControls,
+  JvExMask,
+  JvMaskEdit,
+  JvToolEdit,
+  RxCurrEdit,
+  RxDBCurrEdit,
+  RxToolEdit,
+
+  Data.DB,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.DBCtrls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  view.modal.base.cadastro;
+
+type
+  TViewCadastroFilial = class(TViewBaseCadastro)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    LbFantasia: TLabel;
+    Label5: TLabel;
+    LBCPFCNPJ: TLabel;
+    LBRgIncEstadual: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label14: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    EdtRazao: TDBEdit;
+    EdtFantasia: TDBEdit;
+    EdtRG: TDBEdit;
+    EdtEndereco: TDBEdit;
+    EdtBairro: TDBEdit;
+    EdtComplemento: TDBEdit;
+    EdtCodigo: TDBEdit;
+    cbxFisicaJuridica: TAdvDBComboBox;
+    pnlBtnPesquisaGenerica: TPanel;
+    btnPesquisaGenerica: TSpeedButton;
+    edtDtaNascimento: TJvDBDateEdit;
+    EdtCPFCNPJ: TJvDBMaskEdit;
+    EdtCep: TJvDBMaskEdit;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    Label3: TLabel;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    Label4: TLabel;
+    DBEdit7: TDBEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    DBEdit8: TDBEdit;
+    Label10: TLabel;
+    DBEdit9: TDBEdit;
+    Label11: TLabel;
+    DBLookupComboboxEh1: TDBLookupComboboxEh;
+    Label12: TLabel;
+    PageControl1: TPageControl;
+    pnlAbas: TPanel;
+    PnBtnObs: TPanel;
+    BtnObservacao: TSpeedButton;
+    PnBtnReferencia: TPanel;
+    BtnReferencia: TSpeedButton;
+    PnBtnEnderecos: TPanel;
+    btnEnderecos: TSpeedButton;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    DBComboBoxEh1: TDBComboBoxEh;
+    Label13: TLabel;
+    DBComboBoxEh2: TDBComboBoxEh;
+    Label15: TLabel;
+    DBComboBoxEh3: TDBComboBoxEh;
+    Label16: TLabel;
+    Label17: TLabel;
+    DBEdit10: TDBEdit;
+    Label19: TLabel;
+    DBComboBoxEh4: TDBComboBoxEh;
+    Label25: TLabel;
+    DBComboBoxEh6: TDBComboBoxEh;
+    Label24: TLabel;
+    DBComboBoxEh5: TDBComboBoxEh;
+    DBImage1: TDBImage;
+    DBImage2: TDBImage;
+    Panel2: TPanel;
+    SpeedButton1: TSpeedButton;
+    Panel3: TPanel;
+    SpeedButton2: TSpeedButton;
+    Panel4: TPanel;
+    SpeedButton3: TSpeedButton;
+    Panel5: TPanel;
+    SpeedButton4: TSpeedButton;
+    Label26: TLabel;
+    Panel6: TPanel;
+    SpeedButton5: TSpeedButton;
+    DBEdit11: TDBEdit;
+    Label27: TLabel;
+    DBCurrencyEdit1: TDBCurrencyEdit;
+    DBCheckBoxEh1: TDBCheckBoxEh;
+    DBCheckBoxEh2: TDBCheckBoxEh;
+    DBEdit12: TDBEdit;
+    procedure btnEnderecosClick(Sender: TObject);
+    procedure BtnReferenciaClick(Sender: TObject);
+    procedure BtnObservacaoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewCadastroFilial: TViewCadastroFilial;
+
+implementation
+
+{$R *.dfm}
+
+procedure TViewCadastroFilial.btnEnderecosClick(Sender: TObject);
+begin
+  inherited;
+ PageControl1.TabIndex:= 0;
+end;
+
+procedure TViewCadastroFilial.BtnObservacaoClick(Sender: TObject);
+begin
+  inherited;
+  PageControl1.TabIndex:= 2;
+end;
+
+procedure TViewCadastroFilial.BtnReferenciaClick(Sender: TObject);
+begin
+  inherited;
+ PageControl1.TabIndex:= 1;
+end;
+
+procedure TViewCadastroFilial.FormShow(Sender: TObject);
+begin
+  inherited;
+ PageControl1.TabIndex:= 0;
+end;
+
+end.

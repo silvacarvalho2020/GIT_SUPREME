@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3F9FCB41-C6E7-4ACC-8FDC-AD96450491FA}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SupremeRetaguarda.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pdv\SupremePDV.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SupremeRetaguarda">
+        <MSBuild Projects="SupremeRetaguarda.dproj"/>
+    </Target>
+    <Target Name="SupremeRetaguarda:Clean">
+        <MSBuild Projects="SupremeRetaguarda.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SupremeRetaguarda:Make">
+        <MSBuild Projects="SupremeRetaguarda.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SupremePDV">
+        <MSBuild Projects="pdv\SupremePDV.dproj"/>
+    </Target>
+    <Target Name="SupremePDV:Clean">
+        <MSBuild Projects="pdv\SupremePDV.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SupremePDV:Make">
+        <MSBuild Projects="pdv\SupremePDV.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SupremeRetaguarda;SupremePDV"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SupremeRetaguarda:Clean;SupremePDV:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SupremeRetaguarda:Make;SupremePDV:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

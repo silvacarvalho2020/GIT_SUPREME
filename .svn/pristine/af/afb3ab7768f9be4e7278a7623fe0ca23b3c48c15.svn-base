@@ -1,0 +1,4 @@
+[Cores]
+CorSistema=$00F0A300
+CorBtnConfirma=$00F0A300
+CorBotoes=$00F0A300

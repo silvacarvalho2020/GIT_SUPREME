@@ -1,0 +1,353 @@
+unit view.modal.cadastro.filial;
+
+interface
+
+uses
+  AdvCombo,
+  AdvDBComboBox,
+  DBCtrlsEh,
+  DBGridEh,
+  DBLookupEh,
+  JvDBControls,
+  JvExMask,
+  JvMaskEdit,
+  JvToolEdit,
+  RxCurrEdit,
+  RxDBCurrEdit,
+  RxToolEdit,
+
+  Data.DB,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.DBCtrls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  view.modal.base.cadastro, Vcl.ExtDlgs;
+
+
+type
+  TViewCadastroFilial = class(TViewBaseCadastro)
+    Panel1: TPanel;
+    DBEdit4: TDBEdit;
+    OpenPictureDialog1: TOpenPictureDialog;
+    OpenPictureDialog2: TOpenPictureDialog;
+    Panel2: TPanel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label13: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label19: TLabel;
+    Label25: TLabel;
+    Label24: TLabel;
+    Label27: TLabel;
+    DBComboBoxEh1: TDBComboBoxEh;
+    DBComboBoxEh2: TDBComboBoxEh;
+    DBComboBoxEh3: TDBComboBoxEh;
+    DBEdit10: TDBEdit;
+    DBComboBoxEh4: TDBComboBoxEh;
+    DBComboBoxEh6: TDBComboBoxEh;
+    DBComboBoxEh5: TDBComboBoxEh;
+    TabSheet2: TTabSheet;
+    DBImage1: TDBImage;
+    DBImage2: TDBImage;
+    Panel3: TPanel;
+    spdprocurarfoto1: TSpeedButton;
+    Panel4: TPanel;
+    spdexcluir1: TSpeedButton;
+    Panel5: TPanel;
+    SpeedButton3: TSpeedButton;
+    Panel6: TPanel;
+    spdexcluir2: TSpeedButton;
+    TabSheet3: TTabSheet;
+    Label26: TLabel;
+    Panel7: TPanel;
+    SpeedButton5: TSpeedButton;
+    edtcontabilista: TDBEdit;
+    DBCheckBoxEh1: TDBCheckBoxEh;
+    DBCheckBoxEh2: TDBCheckBoxEh;
+    DBEdit12: TDBEdit;
+    pnlAbas: TPanel;
+    PnBtnObs: TPanel;
+    BtnObservacao: TSpeedButton;
+    PnBtnReferencia: TPanel;
+    BtnReferencia: TSpeedButton;
+    PnBtnEnderecos: TPanel;
+    btnfiscal: TSpeedButton;
+    Panel8: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    LbFantasia: TLabel;
+    Label5: TLabel;
+    LBCPFCNPJ: TLabel;
+    LBRgIncEstadual: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label14: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label10: TLabel;
+    Label12: TLabel;
+    EdtRazao: TDBEdit;
+    EdtFantasia: TDBEdit;
+    EdtRG: TDBEdit;
+    EdtEndereco: TDBEdit;
+    EdtBairro: TDBEdit;
+    EdtComplemento: TDBEdit;
+    EdtCodigo: TDBEdit;
+    cbxFisicaJuridica: TAdvDBComboBox;
+    pnlBtnPesquisaGenerica: TPanel;
+    btnPesquisaGenerica: TSpeedButton;
+    edtDtaNascimento: TJvDBDateEdit;
+    EdtCPFCNPJ: TJvDBMaskEdit;
+    EdtCep: TJvDBMaskEdit;
+    DBEdit1: TDBEdit;
+    edtestado: TDBEdit;
+    edtcidade: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    edtcodibge: TDBEdit;
+    DBEdit2: TDBEdit;
+    Label11: TLabel;
+    DBCheckBox1: TDBCheckBox;
+    DBCurrencyEdit1: TDBCurrencyEdit;
+    DS_GERENTE: TDataSource;
+    edtgerente: TDBEdit;
+    Panel9: TPanel;
+    spdgerente: TSpeedButton;
+    procedure btnfiscalClick(Sender: TObject);
+    procedure BtnReferenciaClick(Sender: TObject);
+    procedure BtnObservacaoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure spdprocurarfoto1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure btnPesquisaGenericaClick(Sender: TObject);
+    procedure spdexcluir1Click(Sender: TObject);
+    procedure spdexcluir2Click(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure EdtCPFCNPJEnter(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure spdgerenteClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewCadastroFilial: TViewCadastroFilial;
+
+implementation
+
+{$R *.dfm}
+
+uses view.modal.pesquisa.cidades.filial, service.cadastro, view.telaFundo,
+  UMensagem, UFuncoes, view.modal.contabilista, view.modal.gerentes;
+
+procedure TViewCadastroFilial.btnfiscalClick(Sender: TObject);
+begin
+  inherited;
+ PageControl1.ActivePageIndex:= 0;
+
+end;
+
+procedure TViewCadastroFilial.BtnObservacaoClick(Sender: TObject);
+begin
+  inherited;
+  PageControl1.ActivePageIndex:= 2;
+end;
+
+procedure TViewCadastroFilial.btnPesquisaGenericaClick(Sender: TObject);
+var
+  TelaFundo: TViewTelaFundo;
+begin // Cidades
+  inherited;
+  ViewPesquisaCidadesFilial := TViewPesquisaCidadesFilial.Create(Self);
+  try
+
+    TelaFundo := TViewTelaFundo.Create(Self);
+    TelaFundo.Show;
+    ViewPesquisaCidadesFilial.ShowModal;
+
+    if ViewPesquisaCidadesFilial.ModalResult = mrOk then
+    begin
+     ViewCadastroFilial.edtcodibge.text  := ViewPesquisaCidadesFilial.FService.QRY_CidadesCODMUNICIPIOIBGE.AsString;
+     ViewCadastroFilial.edtcidade.text   := ViewPesquisaCidadesFilial.FService.QRY_CidadesMUNICIPIO.AsString;
+     ViewCadastroFilial.edtestado.text   := ViewPesquisaCidadesFilial.FService.QRY_CidadesUF.AsString;
+    end;
+
+
+  finally
+    TelaFundo.Hide;
+    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewPesquisaCidadesFilial);
+  end;
+
+end;
+
+procedure TViewCadastroFilial.BtnReferenciaClick(Sender: TObject);
+begin
+  inherited;
+ PageControl1.ActivePageIndex:= 1;
+end;
+
+procedure TViewCadastroFilial.btnSalvarClick(Sender: TObject);
+begin
+  inherited;
+    FService.QRY_Filial.Post;
+    Fnc_CriarMensagem('CADASTRO DA FILIAL SALVO COM SUCESSO ', 'CONFIRMANDO DADOS',
+            'FILIAL CADASTRADA COM SUCESSO!',
+            ExtractFilepath(Application.ExeName) +
+            '\Icones\Confirmacao.png', 'OK');
+    close;
+
+end;
+
+procedure TViewCadastroFilial.EdtCPFCNPJEnter(Sender: TObject);
+begin
+  inherited;
+  if cbxFisicaJuridica.Text = 'FISICA' then
+  begin
+     FService.QRY_FilialCNPJ.EditMask := '000.000.000-00';
+  end else
+  begin
+   FService.QRY_FilialCNPJ.EditMask := '00.000.000/0000-00';
+  end;
+
+end;
+
+procedure TViewCadastroFilial.FormCreate(Sender: TObject);
+begin
+  inherited;
+ DS_Cadastro.DataSet           := FService.QRY_Filial;
+end;
+
+procedure TViewCadastroFilial.FormShow(Sender: TObject);
+var
+   x : Integer;
+begin
+  inherited;
+    DS_GERENTE.DataSet           := FService.QRY_Usuarios;
+    FService.QRY_Usuarios.Open();
+
+    for x:=0 to 2 do
+    begin
+    PageControl1.Pages[x].TabVisible := False;
+     PageControl1.ActivePageIndex:= 0;
+   end;
+
+  if Operacao = 'Inserir' then
+  begin
+     //FILIAL
+    FService.QRY_Filial.Open();
+    FService.QRY_Filial.Insert;
+  end;
+
+
+end;
+
+procedure TViewCadastroFilial.spdexcluir1Click(Sender: TObject);
+begin
+  inherited;
+  FService.QRY_Filial.Edit;
+  FService.QRY_FilialLOGO1.Clear;
+end;
+
+procedure TViewCadastroFilial.spdexcluir2Click(Sender: TObject);
+begin
+  inherited;
+    FService.QRY_Filial.Edit;
+    FService.QRY_FilialLOGO2.Clear;
+end;
+
+procedure TViewCadastroFilial.spdgerenteClick(Sender: TObject);
+var
+  TelaFundo: TViewTelaFundo;
+begin // Gerentes
+  inherited;
+  ViewPesquisaGerentes := TViewPesquisaGerentes.Create(Self);
+  try
+
+    TelaFundo := TViewTelaFundo.Create(Self);
+    TelaFundo.Show;
+    ViewPesquisaGerentes.ShowModal;
+
+    if ViewPesquisaGerentes.ModalResult = mrOk then
+    begin
+     ViewCadastroFilial.edtgerente.text   := ViewPesquisaGerentes.FService.QRY_PessoasIDPESSOAS.AsString;
+    end;
+
+
+  finally
+    TelaFundo.Hide;
+    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewPesquisaGerentes);
+  end;
+end;
+
+
+procedure TViewCadastroFilial.spdprocurarfoto1Click(Sender: TObject);
+begin
+  inherited;
+     if OpenPictureDialog1.Execute then
+     DBImage1.Picture.LoadFromFile(OpenPictureDialog1.FileName)
+end;
+
+procedure TViewCadastroFilial.SpeedButton3Click(Sender: TObject);
+begin
+  inherited;
+    if OpenPictureDialog2.Execute then
+     DBImage2.Picture.LoadFromFile(OpenPictureDialog2.FileName)
+end;
+
+procedure TViewCadastroFilial.SpeedButton5Click(Sender: TObject);
+var
+  TelaFundo: TViewTelaFundo;
+begin // Cidades
+  inherited;
+  ViewPesquisaContabilista := TViewPesquisaContabilista.Create(Self);
+  try
+
+    TelaFundo := TViewTelaFundo.Create(Self);
+    TelaFundo.Show;
+    ViewPesquisaContabilista.ShowModal;
+
+    if ViewPesquisaContabilista.ModalResult = mrOk then
+    begin
+     ViewCadastroFilial.edtcontabilista.text   := ViewPesquisaContabilista.FService.QRY_PessoasIDPESSOAS.AsString;
+    end;
+
+
+  finally
+    TelaFundo.Hide;
+    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewPesquisaContabilista);
+  end;
+end;
+
+end.

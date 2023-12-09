@@ -1,0 +1,83 @@
+Fontes -> Classes = OK ( MENOS CONEXAO )
+Fontes -> Contas = OK
+Fontes -> Produtos = OK
+Fontes -> Testes = OK
+Fontes -> Tributacao = OK
+Fontes -> Vendas = OK
+Fontes -> Pesquisa = OK
+Fontes -> Extras = OK
+
+Fontes -> UCadClientes.pas
+Fontes -> UCadastroDeUsuarios.pas
+Fontes -> UCadMarcas.pas
+Fontes -> UCadClientes.pas
+Fontes -> UEstMarcas.pas
+Fontes -> UFundoTransparente.pas
+Fontes -> UListaClientes.pas
+Fontes -> USubProdutos.pas
+Fontes -> UTelaBaseListas.pas
+Fontes -> UTelaIcones.pas
+Fontes -> UUsuarios.pas
+Fontes -> Login -> ULogin.pas = OK
+
+
+Src -> Login
+
+
+FINANABRIRCAIXA  -> Abertura do Caixa
+FINANCAIXACARDEX -> Tabela do caixa atual
+
+-----------------------------------------------
+
+MODIFICAR: FINANCAIXACARDEX PARA FINANCAIXA
+MODIFICAR: FINAN
+
+PAGAR
+RECEBER
+RECEBER_HAVER 
+PAGAR_HAVER
+BANCOS
+
+
+==============================
+
+DROP TABLE VENPRODUTO
+DROP TABLE VENPEDIDO
+DROP TABLE PERMISSAOUSUARIO
+DROP TABLE PERMISSAOGRUPO
+DROP TABLE MODULOUSUARIOS
+DROP TABLE CLIENTES
+DROP TABLE ESTDERIVADOS
+DROP TABLE ESTGRADE
+DROP TABLE ESTGRADEESTOQUE
+DROP TABLE ESTLOTEITENS
+DROP TABLE FINANCAIXACARDEX -> MUDOU PARA: FINANCAIXA
+DROP TABLE HISTORICOS
+DROP TABLE TERCEIRONIVEL
+DROP TABLE SEGUNDONIVEL
+DROP TABLE PRIMEIRONIVEL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

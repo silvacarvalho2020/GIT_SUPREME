@@ -1,0 +1,6 @@
+LISTAS TDI
+
+ - clientes
+ - fornecedores
+ - produtos
+ - faturamento

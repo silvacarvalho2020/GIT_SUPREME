@@ -1,0 +1,93 @@
+unit view.tdi.lista.embalagens;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.tdi.base.listas, DBGridEhGrouping,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, Data.DB, System.Actions,
+  Vcl.ActnList, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask, JvExMask, JvToolEdit,
+  Vcl.StdCtrls, EhLibVCL, GridsEh, DBAxisGridsEh, DBGridEh, Vcl.WinXPanels;
+
+type
+  TViewListasEmbalagensTDI = class(TViewBaseListasTDI)
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewListasEmbalagensTDI: TViewListasEmbalagensTDI;
+
+implementation
+
+{$R *.dfm}
+
+uses service.cadastro, view.modal.cadastro.embalagens, view.telaFundo;
+
+procedure TViewListasEmbalagensTDI.btnEditarClick(Sender: TObject);
+var
+  TelaFundo: TViewTelaFundo;
+begin
+  inherited;
+  ViewCadastroEmbalagem := TViewCadastroEmbalagem.Create(Self);
+  try
+
+    TelaFundo := TViewTelaFundo.Create(Self);
+    TelaFundo.Show;
+
+    ViewCadastroEmbalagem.IdPesquisa := FService.QRY_EmbalagemIDUNIDADE.AsInteger;
+    ViewCadastroEmbalagem.Operacao   := 'Editar';
+    ViewCadastroEmbalagem.ShowModal;
+
+  finally
+    TelaFundo.Hide;
+    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewCadastroEmbalagem);
+
+    FService.GET_Embalagens(0);
+
+  end;
+end;
+
+procedure TViewListasEmbalagensTDI.btnNovoClick(Sender: TObject);
+var
+  TelaFundo: TViewTelaFundo;
+begin
+  inherited;
+  ViewCadastroEmbalagem := TViewCadastroEmbalagem.Create(Self);
+  try
+
+    TelaFundo := TViewTelaFundo.Create(Self);
+    TelaFundo.Show;
+    ViewCadastroEmbalagem.Operacao   := 'Inserir';
+    ViewCadastroEmbalagem.ShowModal;
+
+  finally
+    TelaFundo.Hide;
+    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewCadastroEmbalagem);
+    FService.GET_Embalagens(0);
+
+  end;
+end;
+
+procedure TViewListasEmbalagensTDI.FormCreate(Sender: TObject);
+begin
+  inherited;
+ ViewListasEmbalagensTDI := Self;
+ DS_Dados.DataSet := FService.QRY_Embalagem;
+end;
+
+procedure TViewListasEmbalagensTDI.FormShow(Sender: TObject);
+begin
+  inherited;
+FService.GET_Embalagens(0);
+end;
+
+end.

@@ -1,0 +1,15 @@
+ok = 1 - Não gravar sem nome... descricao, grupo, ncm, unidade, marca e preco venda
+ok = 2 - Detalhe do ítem: O Código não é exatamente 38 ( mesmo do de cima visto que é da tabela detalhe )... 
+ok = 3 - Não cadastrar com o mesmo codigo de barras...
+ok = 4 - Ordem dos Campos: Codigo, Descricao, Referencia, Cod. Barras, Unidade, Preco Venda
+ok = 5 - Detalhe: Acrescentar marca, estoque, grupo
+ok = 6 - Formação de preço: Preco Custo: preco inicial + ipi + frete
+ok = 7 - Quando jogar a margem de lucro, calcular o preço de venda baseado no preço entrada
+ok = 8 - Tirar o nome: Compra, Venda da Formação de Preço
+ok = 9 - Criar os grupos, subgrupos e outros tudo 1 = GERAL
+
+===========================
+
+idempresa ( nao usa mais ) - dados empresa tabela produtos.mp4 tudo é feito no detalhe... para mult. filial
+
+video: ESTQOUE SUPREME IDEIAS.mp4 - rever para implementar...

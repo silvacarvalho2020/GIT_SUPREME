@@ -1,0 +1,84 @@
+unit view.tdi.lista.filiais;
+
+interface
+
+uses
+  DBAxisGridsEh,
+  DBGridEh,
+  DBGridEhGrouping,
+  DBGridEhToolCtrls,
+  DynVarsEh,
+  EhLibVCL,
+  GridsEh,
+  JvExMask,
+  JvToolEdit,
+  ToolCtrlsEh,
+  acPNG,
+
+  Data.DB,
+
+  System.Actions,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.ActnList,
+  Vcl.Buttons,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+  Vcl.WinXPanels,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  service.cadastro,
+
+  view.tdi.base.listas,
+  view.telaFundo;
+
+type
+  TViewListasFiliaisTDI = class(TViewBaseListasTDI)
+    procedure btnNovoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewListasFiliaisTDI: TViewListasFiliaisTDI;
+
+implementation
+
+{$R *.dfm}
+
+uses view.modal.cadastro.filial, view.modal.cadastro.clientes;
+
+procedure TViewListasFiliaisTDI.btnNovoClick(Sender: TObject);
+begin
+  inherited;
+  ViewCadastroFilial := TViewCadastroFilial.Create(Self);
+  try
+//
+//    TelaFundo := TViewTelaFundo.Create(Self);
+//    TelaFundo.Show;
+
+//    ViewCadastroProdutos.Operacao   := 'Inserir';
+      ViewCadastroFilial.ShowModal;
+
+  finally
+//    TelaFundo.Hide;
+//    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewCadastroFilial);
+
+//    FService.GET_Produtos(0);
+
+  end;
+end;
+
+end.

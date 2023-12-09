@@ -1,0 +1,262 @@
+unit view.modal.cadastro.filial;
+
+interface
+
+uses
+  AdvCombo,
+  AdvDBComboBox,
+  DBCtrlsEh,
+  DBGridEh,
+  DBLookupEh,
+  JvDBControls,
+  JvExMask,
+  JvMaskEdit,
+  JvToolEdit,
+  RxCurrEdit,
+  RxDBCurrEdit,
+  RxToolEdit,
+
+  Data.DB,
+
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.DBCtrls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  view.modal.base.cadastro, Vcl.ExtDlgs;
+
+
+type
+  TViewCadastroFilial = class(TViewBaseCadastro)
+    Panel1: TPanel;
+    DBEdit4: TDBEdit;
+    OpenPictureDialog1: TOpenPictureDialog;
+    OpenPictureDialog2: TOpenPictureDialog;
+    Panel2: TPanel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label13: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label19: TLabel;
+    Label25: TLabel;
+    Label24: TLabel;
+    Label27: TLabel;
+    DBComboBoxEh1: TDBComboBoxEh;
+    DBComboBoxEh2: TDBComboBoxEh;
+    DBComboBoxEh3: TDBComboBoxEh;
+    DBEdit10: TDBEdit;
+    DBComboBoxEh4: TDBComboBoxEh;
+    DBComboBoxEh6: TDBComboBoxEh;
+    DBComboBoxEh5: TDBComboBoxEh;
+    TabSheet2: TTabSheet;
+    DBImage1: TDBImage;
+    DBImage2: TDBImage;
+    Panel3: TPanel;
+    spdprocurarfoto1: TSpeedButton;
+    Panel4: TPanel;
+    spdexcluir1: TSpeedButton;
+    Panel5: TPanel;
+    SpeedButton3: TSpeedButton;
+    Panel6: TPanel;
+    spdexcluir2: TSpeedButton;
+    TabSheet3: TTabSheet;
+    Label26: TLabel;
+    Panel7: TPanel;
+    SpeedButton5: TSpeedButton;
+    DBEdit11: TDBEdit;
+    DBCheckBoxEh1: TDBCheckBoxEh;
+    DBCheckBoxEh2: TDBCheckBoxEh;
+    DBEdit12: TDBEdit;
+    pnlAbas: TPanel;
+    PnBtnObs: TPanel;
+    BtnObservacao: TSpeedButton;
+    PnBtnReferencia: TPanel;
+    BtnReferencia: TSpeedButton;
+    PnBtnEnderecos: TPanel;
+    btnfiscal: TSpeedButton;
+    Panel8: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    LbFantasia: TLabel;
+    Label5: TLabel;
+    LBCPFCNPJ: TLabel;
+    LBRgIncEstadual: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label14: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label10: TLabel;
+    Label12: TLabel;
+    EdtRazao: TDBEdit;
+    EdtFantasia: TDBEdit;
+    EdtRG: TDBEdit;
+    EdtEndereco: TDBEdit;
+    EdtBairro: TDBEdit;
+    EdtComplemento: TDBEdit;
+    EdtCodigo: TDBEdit;
+    cbxFisicaJuridica: TAdvDBComboBox;
+    pnlBtnPesquisaGenerica: TPanel;
+    btnPesquisaGenerica: TSpeedButton;
+    edtDtaNascimento: TJvDBDateEdit;
+    EdtCPFCNPJ: TJvDBMaskEdit;
+    EdtCep: TJvDBMaskEdit;
+    DBEdit1: TDBEdit;
+    edtestado: TDBEdit;
+    edtcidade: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    edtcodibge: TDBEdit;
+    DBLookupComboboxEh1: TDBLookupComboboxEh;
+    DBEdit2: TDBEdit;
+    Label11: TLabel;
+    DBCheckBox1: TDBCheckBox;
+    DBCurrencyEdit1: TDBCurrencyEdit;
+    procedure btnfiscalClick(Sender: TObject);
+    procedure BtnReferenciaClick(Sender: TObject);
+    procedure BtnObservacaoClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure spdprocurarfoto1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure btnPesquisaGenericaClick(Sender: TObject);
+    procedure spdexcluir1Click(Sender: TObject);
+    procedure spdexcluir2Click(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewCadastroFilial: TViewCadastroFilial;
+
+implementation
+
+{$R *.dfm}
+
+uses view.modal.pesquisa.cidades.filial, service.cadastro;
+
+procedure TViewCadastroFilial.btnfiscalClick(Sender: TObject);
+begin
+  inherited;
+ PageControl1.ActivePageIndex:= 0;
+end;
+
+procedure TViewCadastroFilial.BtnObservacaoClick(Sender: TObject);
+begin
+  inherited;
+  PageControl1.ActivePageIndex:= 2;
+end;
+
+procedure TViewCadastroFilial.btnPesquisaGenericaClick(Sender: TObject);
+//var
+//  TelaFundo: TViewTelaFundo;
+begin // Cidades
+  inherited;
+  ViewPesquisaCidadesFilial := TViewPesquisaCidadesFilial.Create(Self);
+
+   try
+    ViewPesquisaCidadesFilial.Showmodal;
+
+   finally
+     FreeAndNil(ViewPesquisaCidadesFilial);
+
+   end;
+end;
+
+procedure TViewCadastroFilial.BtnReferenciaClick(Sender: TObject);
+begin
+  inherited;
+ PageControl1.ActivePageIndex:= 1;
+end;
+
+procedure TViewCadastroFilial.btnSalvarClick(Sender: TObject);
+begin
+  inherited;
+    FService.QRY_Filial.Post;
+
+end;
+
+procedure TViewCadastroFilial.FormCreate(Sender: TObject);
+begin
+  inherited;
+ DS_Cadastro.DataSet           := FService.QRY_Filial;
+end;
+
+procedure TViewCadastroFilial.FormShow(Sender: TObject);
+var
+   x : Integer;
+begin
+  inherited;
+
+    for x:=0 to 2 do
+    begin
+    PageControl1.Pages[x].TabVisible := False;
+     PageControl1.ActivePageIndex:= 0;
+   end;
+
+  if Operacao = 'Inserir' then
+  begin
+     //FILIAL
+    FService.QRY_Filial.Open();
+    FService.QRY_Filial.Insert;
+  end;
+
+
+end;
+
+procedure TViewCadastroFilial.spdexcluir1Click(Sender: TObject);
+begin
+  inherited;
+  FService.QRY_Filial.Edit;
+  FService.QRY_FilialLOGO1.Clear;
+end;
+
+procedure TViewCadastroFilial.spdexcluir2Click(Sender: TObject);
+begin
+  inherited;
+    FService.QRY_Filial.Edit;
+    FService.QRY_FilialLOGO2.Clear;
+end;
+
+procedure TViewCadastroFilial.spdprocurarfoto1Click(Sender: TObject);
+begin
+  inherited;
+     if OpenPictureDialog1.Execute then
+     DBImage1.Picture.LoadFromFile(OpenPictureDialog1.FileName)
+end;
+
+procedure TViewCadastroFilial.SpeedButton3Click(Sender: TObject);
+begin
+  inherited;
+    if OpenPictureDialog2.Execute then
+     DBImage2.Picture.LoadFromFile(OpenPictureDialog2.FileName)
+end;
+
+end.

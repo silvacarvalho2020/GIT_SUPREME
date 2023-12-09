@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/12/04 19:50:03.000.441,=C:\SUPREME\trunk\Unit1.pas</Transaction>
+    <Transaction>2023/12/04 19:51:38.000.778,C:\SUPREME\trunk\Unit1.dfm=C:\SUPREME\trunk\src\view\view.modal\view.modal.cadastro.ncm.dfm</Transaction>
+    <Transaction>2023/12/04 19:51:38.000.778,C:\SUPREME\trunk\Unit1.pas=C:\SUPREME\trunk\src\view\view.modal\view.modal.cadastro.ncm.pas</Transaction>
+    <Transaction>2023/12/04 22:48:20.000.301,=C:\SUPREME\trunk\Unit1.pas</Transaction>
+    <Transaction>2023/12/04 22:56:22.000.747,C:\SUPREME\trunk\Unit1.dfm=C:\SUPREME\trunk\src\view\views.tdi\view.tdi.lista.cst.dfm</Transaction>
+    <Transaction>2023/12/04 22:56:22.000.747,C:\SUPREME\trunk\Unit1.pas=C:\SUPREME\trunk\src\view\views.tdi\view.tdi.lista.cst.pas</Transaction>
+    <Transaction>2023/12/04 23:16:22.000.125,=C:\SUPREME\trunk\Unit1.pas</Transaction>
+    <Transaction>2023/12/04 23:17:09.000.574,C:\SUPREME\trunk\Unit1.pas=C:\SUPREME\trunk\src\view\view.modal\view.modal.cadastro.cst.pas</Transaction>
+    <Transaction>2023/12/04 23:17:09.000.574,C:\SUPREME\trunk\Unit1.dfm=C:\SUPREME\trunk\src\view\view.modal\view.modal.cadastro.cst.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

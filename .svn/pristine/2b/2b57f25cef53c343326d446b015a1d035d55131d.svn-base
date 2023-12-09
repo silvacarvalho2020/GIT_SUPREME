@@ -1,0 +1,700 @@
+unit view.modal.menu;
+
+interface
+
+uses
+  Conexao,
+  TDI,
+  UCBase,
+  UCDataConnector,
+  UCFireDACConn,
+  ULayout,
+  UMensagem,
+  UTelaBase,
+  acPNG,
+
+  System.Actions,
+  System.Classes,
+  System.Generics.Collections,
+  System.SysUtils,
+  System.Variants,
+
+  Vcl.ActnList,
+  Vcl.AppEvnts,
+  Vcl.Buttons,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Imaging.pngimage,
+  Vcl.StdCtrls,
+
+  Winapi.Messages,
+  Winapi.Windows,
+
+  view.base,
+  view.modal.cadastro.vendas,
+  view.tdi.home,
+  view.tdi.lista.clientes,
+  view.tdi.lista.faturamento,
+  view.tdi.lista.filiais,
+  view.tdi.lista.fornecedores,
+  view.tdi.lista.grupos,
+  view.tdi.lista.orcamentos,
+  view.tdi.lista.prevendas,
+  view.tdi.lista.produtos,
+  view.tdi.lista.vendas;
+
+type
+  TMyTabSheet = class(TTabSheet)
+  private
+    FForm: TForm;
+  public
+    property Form: TForm read FForm write FForm;
+end;
+
+type
+  TFormCloseEvent = procedure(Sender: TObject; var Action: TCloseAction) of object;
+
+
+type
+  TViewMenu = class(TViewBase)
+    PnHome: TPanel;
+    pnlTDI: TPanel;
+    PnFundo: TPanel;
+    ApplicationEvents: TApplicationEvents;
+    pnlMenu: TPanel;
+    pnlBackground: TPanel;
+    pnlTopo: TPanel;
+    pnlRodape: TPanel;
+    pnlLineLeftMenu: TPanel;
+    btnCadastros: TSpeedButton;
+    btnEstoque: TSpeedButton;
+    btnFinanceiro: TSpeedButton;
+    btnFiscal: TSpeedButton;
+    btnConfiguracoes: TSpeedButton;
+    btnMovimentos: TSpeedButton;
+    pnlMenuMovimentos: TPanel;
+    pnlMenuMovimentosConteudo: TPanel;
+    btnVenda: TSpeedButton;
+    btnPreVenda: TSpeedButton;
+    btnOrcamento: TSpeedButton;
+    pnlMenuCadastros: TPanel;
+    pnlMenuCadastrosConteudo: TPanel;
+    btnCliente: TSpeedButton;
+    btnFornecedores: TSpeedButton;
+    btnUsuario: TSpeedButton;
+    pnlMenuEstoque: TPanel;
+    pnlMenuEstoqueConteudo: TPanel;
+    btnProduto: TSpeedButton;
+    btnNotasEntrada: TSpeedButton;
+    pnlMenuFinanceiro: TPanel;
+    pnlMenuFinanceiroConteudo: TPanel;
+    btnFaturamento: TSpeedButton;
+    btnCaixa: TSpeedButton;
+    btnContasReceber: TSpeedButton;
+    btnContasPagar: TSpeedButton;
+    btnConfigBancoDados: TSpeedButton;
+    lblUserLogado: TLabel;
+    PnAbreFechaMenu: TPanel;
+    ImgAbreMenu: TImage;
+    ImgFechaMenu: TImage;
+    pnlTestePosicao: TPanel;
+    btnGrupos: TSpeedButton;
+    btnSubGrupos: TSpeedButton;
+    btnFabricantes: TSpeedButton;
+    PC_Principal: TPageControl;
+    tab_home: TTabSheet;
+    ImgLogoSistema: TImage;
+    pnlConteudoTopo: TPanel;
+    pnlFecharSistema: TPanel;
+    pnlBackNomeEmpresa: TPanel;
+    pnlNomeEmpresa: TPanel;
+    pnlNomeEmpresaSlogan: TPanel;
+    pnlLineDivisoriaNomeEmpresa: TPanel;
+    lblNomeEmpresa: TLabel;
+    lblNomeEmpresaSlogan: TLabel;
+    pnlConteudoDados: TPanel;
+    pnlLineAzulClaroCentro: TPanel;
+    pnlLineDivisaoCentro: TPanel;
+    pnlTopoCentro: TPanel;
+    pnlLineAzulClaroFechar: TPanel;
+    pnlLineTopoFechar: TPanel;
+    btnFechar: TSpeedButton;
+    ActionList_Principal: TActionList;
+    actCadUser: TAction;
+    actLogof: TAction;
+    actAlterarSenha: TAction;
+    UserControl: TUserControl;
+    UCFireDACConn: TUCFireDACConn;
+    actMovimentos: TAction;
+    actCadastros: TAction;
+    actEstoque: TAction;
+    actFinanceiro: TAction;
+    actFiscal: TAction;
+    actConfiguracoes: TAction;
+    actBancoDados: TAction;
+    actVendas: TAction;
+    actPreVendas: TAction;
+    actOrcamentos: TAction;
+    actClientes: TAction;
+    actFornecedores: TAction;
+    actProdutos: TAction;
+    actNotasEntradas: TAction;
+    actGrupos: TAction;
+    actSubGrupos: TAction;
+    actFabricantes: TAction;
+    actCaixa: TAction;
+    actFaturamento: TAction;
+    actContasReceber: TAction;
+    actContasPagar: TAction;
+    pnlDadosUsuarios: TPanel;
+    pnlLineUsuarios: TPanel;
+    pnlConteudoUsuarios: TPanel;
+    pnlImgUsuarios: TPanel;
+    imgUsuarioCinza: TImage;
+    imgUsuarioAzul: TImage;
+    pnlPerfilNomeUsuario: TPanel;
+    lblNomeUsuario: TLabel;
+    lblTitUsuario: TLabel;
+    spdcondicao: TSpeedButton;
+    pnlVersao: TPanel;
+    lblVersao: TLabel;
+    spdempresa: TSpeedButton;
+    spdformapagamento: TSpeedButton;
+    procedure FormShow(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure ImgFechaMenuClick(Sender: TObject);
+    procedure ImgAbreMenuClick(Sender: TObject);
+    procedure ApplicationEventsModalBegin(Sender: TObject);
+    procedure ApplicationEventsModalEnd(Sender: TObject);
+    procedure btnUsuarioClick(Sender: TObject);
+    procedure btnConfigBancoDadosClick(Sender: TObject);
+    procedure btnNotasEntradaClick(Sender: TObject);
+    procedure btnCaixaClick(Sender: TObject);
+    procedure btnFaturamentoClick(Sender: TObject);
+    procedure btnContasReceberClick(Sender: TObject);
+    procedure btnContasPagarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure actMovimentosExecute(Sender: TObject);
+    procedure imgUsuarioCinzaMouseEnter(Sender: TObject);
+    procedure imgUsuarioAzulMouseLeave(Sender: TObject);
+    procedure imgUsuarioAzulClick(Sender: TObject);
+    procedure UserControlLoginSucess(Sender: TObject; IdUser: Integer; Usuario, Nome, Senha, Email: string; Privileged: Boolean);
+    procedure actVendasExecute(Sender: TObject);
+    procedure actPreVendasExecute(Sender: TObject);
+    procedure actOrcamentosExecute(Sender: TObject);
+    procedure actClientesExecute(Sender: TObject);
+    procedure actFornecedoresExecute(Sender: TObject);
+    procedure actProdutosExecute(Sender: TObject);
+    procedure actGruposExecute(Sender: TObject);
+    procedure actSubGruposExecute(Sender: TObject);
+    procedure actFabricantesExecute(Sender: TObject);
+    procedure actCadastrosExecute(Sender: TObject);
+    procedure actEstoqueExecute(Sender: TObject);
+    procedure actFinanceiroExecute(Sender: TObject);
+    procedure actFiscalExecute(Sender: TObject);
+    procedure actConfiguracoesExecute(Sender: TObject);
+    procedure actBancoDadosExecute(Sender: TObject);
+    procedure spdempresaClick(Sender: TObject);
+  private
+    procedure CriarFormulario(FormClass: TFormClass; AllowMultiple: Boolean);
+    procedure CloseButtonClick(Sender: TObject);
+    function GetVersaoExe(Prog: string): string;
+
+  published
+    procedure TLabelMouseEnter(Sender: TObject);
+    procedure TLabelMouseLeave(Sender: TObject);
+
+    //Oculta Menus
+    procedure MostrarMenuMouseEnter(Sender: TObject);
+
+  public
+
+    var
+      FTDI: TTDI;
+      FormInstances: TDictionary<TClass, TForm>;
+
+  end;
+
+var
+  ViewMenu: TViewMenu;
+
+implementation
+
+uses
+  UFuncoes,
+
+  view.tdi.lista.Fabricantes,
+  view.tdi.lista.Subgrupos;
+{$R *.dfm}
+
+
+procedure TViewMenu.actBancoDadosExecute(Sender: TObject);
+begin //BancoDados
+  inherited;
+
+end;
+
+procedure TViewMenu.actCadastrosExecute(Sender: TObject);
+begin //Cadastros
+  inherited;
+
+end;
+
+procedure TViewMenu.actClientesExecute(Sender: TObject);
+begin //actClientes
+  inherited;
+  pnlMenuCadastros.Visible := False;
+  CriarFormulario(TViewListaClientesTDI, False);
+//  FTDI.MostrarFormulario(TViewListaClientesTDI, False);
+end;
+
+procedure TViewMenu.actConfiguracoesExecute(Sender: TObject);
+begin //Configuracoes
+  inherited;
+
+end;
+
+procedure TViewMenu.actEstoqueExecute(Sender: TObject);
+begin //Estoque
+  inherited;
+
+end;
+
+procedure TViewMenu.actFabricantesExecute(Sender: TObject);
+begin // actFabricantes
+  inherited;
+  pnlMenuEstoque.Visible := False;
+  CriarFormulario(TViewListaFabricantesTDI, False);
+//  FTDI.MostrarFormulario(TViewListaFabricantesTDI, False);
+end;
+
+procedure TViewMenu.actFinanceiroExecute(Sender: TObject);
+begin //Financeiro
+  inherited;
+
+end;
+
+procedure TViewMenu.actFiscalExecute(Sender: TObject);
+begin //Fiscal
+  inherited;
+
+end;
+
+procedure TViewMenu.actFornecedoresExecute(Sender: TObject);
+begin //actFornecedores
+  inherited;
+  pnlMenuCadastros.Visible := False;
+  CriarFormulario(TViewListaFornecedoresTDI, False);
+//  FTDI.MostrarFormulario(TViewListaFornecedoresTDI, False);
+end;
+
+procedure TViewMenu.actGruposExecute(Sender: TObject);
+begin//actGrupos
+  inherited;
+  pnlMenuEstoque.Visible := False;
+  CriarFormulario(TViewListasGruposTDI, False);
+//  FTDI.MostrarFormulario(TViewListasGruposTDI, False);
+end;
+
+procedure TViewMenu.actMovimentosExecute(Sender: TObject);
+begin //Movimentos
+  inherited;
+
+end;
+
+procedure TViewMenu.actOrcamentosExecute(Sender: TObject);
+begin // actOrcamentos
+  inherited;
+  pnlMenuMovimentos.Visible := False;
+  CriarFormulario(TViewListaOrcamentosTDI, False);
+//  FTDI.MostrarFormulario(TViewListaOrcamentosTDI, False);
+end;
+
+procedure TViewMenu.actPreVendasExecute(Sender: TObject);
+begin //actPreVendas
+  inherited;
+  pnlMenuMovimentos.Visible := False;
+  CriarFormulario(TViewListaPreVendasTDI, False);
+//  FTDI.MostrarFormulario(TViewListaPreVendasTDI, False);
+end;
+
+procedure TViewMenu.actProdutosExecute(Sender: TObject);
+begin //actProdutos
+  inherited;
+  pnlMenuEstoque.Visible := False;
+  CriarFormulario(TViewListaProdutosTDI, False);
+//  FTDI.MostrarFormulario(TViewListaProdutosTDI, False);
+end;
+
+procedure TViewMenu.actSubGruposExecute(Sender: TObject);
+begin // actSubGrupos
+  inherited;
+  pnlMenuEstoque.Visible := False;
+  CriarFormulario(TViewListaSubGrupoTDI, False);
+//  FTDI.MostrarFormulario(TViewListaSubGrupoTDI, False);
+end;
+
+procedure TViewMenu.actVendasExecute(Sender: TObject);
+begin //actVendas
+  inherited;
+
+  pnlMenuMovimentos.Visible := False;
+//  FTDI.MostrarFormulario(TViewListaVendasTDI, False);
+ViewCadastroVendas := TViewCadastroVendas.Create(Self);
+  try
+
+//    TelaFundo := TViewTelaFundo.Create(Self);
+//    TelaFundo.Show;
+
+    ViewCadastroVendas.Operacao   := 'Inserir';
+    ViewCadastroVendas.ShowModal;
+
+  finally
+//    TelaFundo.Hide;
+//    FreeAndNil(TelaFundo);
+    FreeAndNil(ViewCadastroVendas);
+
+    FService.GET_Vendas(0);
+
+  end;
+
+end;
+
+procedure TViewMenu.ApplicationEventsModalBegin(Sender: TObject);
+begin
+//     form_esmaecer_fundo.Show;
+end;
+
+procedure TViewMenu.ApplicationEventsModalEnd(Sender: TObject);
+begin
+//     form_esmaecer_fundo.hide;
+end;
+
+procedure TViewMenu.btnCaixaClick(Sender: TObject);
+begin
+  inherited;
+  pnlMenuFinanceiro.Visible := False;
+end;
+
+procedure TViewMenu.btnConfigBancoDadosClick(Sender: TObject);
+begin
+  inherited;
+  if FrmConfigConexao = nil then
+
+  begin
+
+    FrmConfigConexao := TFrmConfigConexao.create(self);
+
+    FrmConfigConexao.Parent := pnlTDI;
+    // FrmConfigConexao.Align        := AlClient;
+    FrmConfigConexao.BorderStyle := bsNone;
+
+    FrmConfigConexao.show;
+  end;
+
+end;
+
+procedure TViewMenu.btnContasPagarClick(Sender: TObject);
+begin
+  inherited;
+  pnlMenuFinanceiro.Visible := False;
+end;
+
+procedure TViewMenu.btnContasReceberClick(Sender: TObject);
+begin
+  inherited;
+  pnlMenuFinanceiro.Visible := False;
+end;
+
+procedure TViewMenu.btnFaturamentoClick(Sender: TObject);
+begin //Faturamento
+  inherited;
+  pnlMenuFinanceiro.Visible := False;
+  FTDI.MostrarFormulario(TViewListaFaturamentoTDI, False);
+end;
+
+procedure TViewMenu.btnFecharClick(Sender: TObject);
+begin
+  inherited;
+  IF  fnc_CriarMensagem('FECHAR SISTEMA', 'CONFIRMANDO A FINALIZAÇÃO',
+          'Tem certeza que deseja FECHAR O SITEMA?', ExtractFilepath(Application.ExeName) +
+          '\Icones\Atencao.png', 'CONFIRMACAO') THEN
+       BEGIN
+          Application.terminate;
+      end;
+
+end;
+
+procedure TViewMenu.btnNotasEntradaClick(Sender: TObject);
+begin
+  inherited;
+  pnlMenuEstoque.Visible := False;
+end;
+
+procedure TViewMenu.CloseButtonClick(Sender: TObject);
+var
+  TabSheet: TMyTabSheet;
+  FormClass: TClass;
+begin
+  if Sender is TBitBtn then
+  begin
+    TabSheet := TMyTabSheet(TBitBtn(Sender).Parent);
+    if TabSheet <> nil then
+    begin
+      FormClass := TabSheet.Form.ClassType;
+      if FormInstances.ContainsKey(FormClass) then
+      begin
+        PC_Principal.ActivePage := nil;
+        FormInstances[FormClass].Free;
+        FormInstances.Remove(FormClass);
+      end;
+      PC_Principal.ActivePage := tab_home;
+      TabSheet.Free;
+    end;
+  end;
+end;
+
+procedure TViewMenu.CriarFormulario(FormClass: TFormClass; AllowMultiple: Boolean);
+var
+  Form: TForm;
+  TabSheet: TMyTabSheet;
+  CloseButton: TBitBtn;
+begin
+
+  // Verifica se a abertura múltipla de formulários está desabilitada
+  if not AllowMultiple then
+  begin
+    // Verifica se já existe uma instância do formulário aberta
+    if FormInstances.ContainsKey(FormClass) then
+    begin
+      PC_Principal.ActivePage := TMyTabSheet(FormInstances[FormClass].Parent).Form.Parent as TTabSheet;
+      Exit;
+    end;
+  end;
+
+  // Cria uma nova instância do formulário
+  Form := FormClass.Create(Self);
+  FormInstances.AddOrSetValue(Form.ClassType, Form);
+
+  Form.Parent       := PC_Principal;
+  Form.BorderStyle  := bsNone;
+  Form.Align        := alClient;
+
+  // Cria um novo TabSheet
+  TabSheet                := TMyTabSheet.Create(PC_Principal);
+  TabSheet.Caption        := Form.Caption; // Caption;
+  TabSheet.PageControl    := PC_Principal;
+  PC_Principal.ActivePage := TabSheet;
+
+  Form.Parent := TabSheet;
+  Form.Show;
+
+  TabSheet.Form := Form;
+
+  // Cria o botão de fechar
+  CloseButton               := TBitBtn.Create(TabSheet);
+  CloseButton.Parent        := TabSheet;
+  CloseButton.Cursor        := crHandPoint;
+  CloseButton.Font.Name     := 'Segoe UI Light';
+  CloseButton.Font.Size     := 9;
+  CloseButton.Font.Color    := $00525252;
+  CloseButton.Width         := 30;
+  CloseButton.Height        := 25;
+  CloseButton.Left          := TabSheet.Width - CloseButton.Width - 5;
+  CloseButton.Top           := 5;
+  CloseButton.Caption       := '[x]';
+  CloseButton.TabStop       := False;
+  CloseButton.OnClick       := CloseButtonClick;
+
+end;
+
+procedure TViewMenu.FormCreate(Sender: TObject);
+begin // Create
+  inherited;
+  FormInstances := TDictionary<TClass, TForm>.Create;
+  UCFireDACConn.Connection := FService.FDConn; //conexão do TUserControl
+end;
+
+procedure TViewMenu.FormDestroy(Sender: TObject);
+begin //destroy
+  inherited;
+  FreeAndNil(FormInstances);
+end;
+
+procedure TViewMenu.FormResize(Sender: TObject);
+begin
+  // ImgAbreMenu.Left := Round ((pnAbreFechaMenu.width  - ImgAbreMenu.width ) / 2);
+  // ImgAbreMenu.Top  := Round ((pnAbreFechaMenu.Height - ImgAbreMenu.Height) / 2);
+  //
+  // ImgFechaMenu.Left := Round ((pnAbreFechaMenu.width  - ImgFechaMenu.width ) / 2);
+  // ImgFechaMenu.Top  := Round ((pnAbreFechaMenu.Height - ImgFechaMenu.Height) / 2);
+
+  ImgLogoSistema.Left := Round((pnlTDI.width - ImgLogoSistema.width));
+  ImgLogoSistema.Top :=
+    Round((pnlTDI.height - ImgLogoSistema.height) - 40);
+
+end;
+
+procedure TViewMenu.FormShow(Sender: TObject);
+begin  //show
+  inherited;
+
+  lblVersao.Caption := GetVersaoExe(Application.ExeName);
+
+  LblUserLogado.caption := usuariologado;
+
+end;
+
+function TViewMenu.GetVersaoExe(Prog: string): string;
+var
+ VerInfoSize: DWORD;
+ VerInfo: Pointer;
+ VerValueSize: DWORD;
+ VerValue: PVSFixedFileInfo;
+ Dummy: DWORD;
+ V1, V2, V3, V4: Word;
+begin  //Retorn a Versao do Exe
+ try
+   VerInfoSize := GetFileVersionInfoSize(PChar(Prog), Dummy);
+   GetMem(VerInfo, VerInfoSize);
+   GetFileVersionInfo(PChar(prog), 0, VerInfoSize, VerInfo);
+   VerQueryValue(VerInfo, '', Pointer(VerValue), VerValueSize);
+   with (VerValue^) do
+   begin
+     V1 := dwFileVersionMS shr 16;
+     V2 := dwFileVersionMS and $FFFF;
+     V3 := dwFileVersionLS shr 16;
+     V4 := dwFileVersionLS and $FFFF;
+   end;
+   FreeMem(VerInfo, VerInfoSize);
+   Result := Format('%d.%d.%d.%d', [v1, v2, v3, v4]);
+ except
+   Result := '1.0.0';
+ end;
+end;
+
+procedure TViewMenu.ImgAbreMenuClick(Sender: TObject);
+begin
+  ImgFechaMenu.Visible := true;
+  ImgAbreMenu.Visible := false;
+  pnlMenu.Width := 130;
+end;
+
+procedure TViewMenu.ImgFechaMenuClick(Sender: TObject);
+begin
+  ImgAbreMenu.Visible := true;
+  ImgFechaMenu.Visible := false;
+  pnlMenu.Width := 0;
+end;
+
+procedure TViewMenu.imgUsuarioAzulClick(Sender: TObject);
+begin
+  inherited;
+  actCadUser.Execute;
+end;
+
+procedure TViewMenu.imgUsuarioAzulMouseLeave(Sender: TObject);
+begin
+  inherited;
+  imgUsuarioCinza.Visible := True;
+  imgUsuarioAzul.Visible  := False;
+end;
+
+procedure TViewMenu.imgUsuarioCinzaMouseEnter(Sender: TObject);
+begin
+  inherited;
+  imgUsuarioCinza.Visible := False;
+  imgUsuarioAzul.Visible  := True;
+end;
+
+procedure TViewMenu.MostrarMenuMouseEnter(Sender: TObject);
+var
+  button: TSpeedButton;
+begin
+  // obtém o botão do menu que ativou o evento MouseEnter
+  button := Sender as TSpeedButton;
+
+  // oculta todos os painéis de subníveis
+  pnlMenuMovimentos.Visible     := False;
+  pnlMenuCadastros.Visible      := False;
+  pnlMenuEstoque.Visible        := False;
+  pnlMenuFinanceiro.Visible     := False;
+
+  // mostra o painel de subníveis correspondente ao botão do menu atual
+  case button.Tag of
+    1:begin
+      pnlMenuMovimentos.Left      := 130;
+      pnlMenuMovimentos.Top       := 80;
+      pnlMenuMovimentos.Visible   := True;
+    end;
+
+    2:begin
+      pnlMenuCadastros.Left     := 130;
+      pnlMenuCadastros.Top      := 175;
+      pnlMenuCadastros.Visible  := True;
+    end;
+
+    3:begin
+      pnlMenuEstoque.Left     := 130;
+      pnlMenuEstoque.Top      := 230;
+      pnlMenuEstoque.Visible  := True;
+    end;
+
+    4:begin
+      pnlMenuFinanceiro.Left    := 130;
+      pnlMenuFinanceiro.Top     := 285;
+      pnlMenuFinanceiro.Visible := True;
+    end;
+
+    else begin
+      // oculta todos os painéis de subníveis
+      pnlMenuMovimentos.Visible     := False;
+      pnlMenuCadastros.Visible      := False;
+      pnlMenuEstoque.Visible        := False;
+      pnlMenuFinanceiro.Visible     := False;
+    end;
+
+  end;
+
+
+
+
+end;
+
+procedure TViewMenu.spdempresaClick(Sender: TObject);
+begin
+  inherited;
+  pnlMenuCadastros.Visible := False;
+  CriarFormulario(TViewListasFiliaisTDI, False);
+end;
+
+procedure TViewMenu.btnUsuarioClick(Sender: TObject);
+begin
+  inherited;
+  pnlMenuCadastros.Visible := False;
+
+end;
+
+procedure TViewMenu.TLabelMouseEnter(Sender: TObject);
+begin
+  TLabel(Sender).Font.Color := clBlack;
+end;
+
+procedure TViewMenu.TLabelMouseLeave(Sender: TObject);
+begin
+  TLabel(Sender).Font.Color := clWhite;
+end;
+
+procedure TViewMenu.UserControlLoginSucess(Sender: TObject; IdUser: Integer; Usuario, Nome, Senha, Email: string; Privileged: Boolean);
+begin
+  inherited;
+  lblNomeUsuario.Caption   := Nome; // UserControl.CurrentUser.UserLogin;
+end;
+
+end.

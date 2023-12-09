@@ -1,0 +1,151 @@
+inherited ViewListasFiliaisTDI: TViewListasFiliaisTDI
+  Caption = 'Lista Filiais'
+  TextHeight = 15
+  inherited CP_cadastro: TCardPanel
+    inherited card_consulta: TCard
+      inherited pnlDadosPesquisa: TPanel
+        inherited GRIDDados: TDBGridEh
+          Columns = <
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'IDEMPRESA'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'RAZAO'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'FANTASIA'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'CNPJ'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'IE'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'FONE'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'CEP'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'ENDERECO'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'NUMERO'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'BAIRRO'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'CODIGOIBGE'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'CRT'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'CIDADE'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'ESTADO'
+              Footers = <>
+            end
+            item
+              CellButtons = <>
+              DynProps = <>
+              EditButtons = <>
+              FieldName = 'COMPLEMENTO'
+              Footers = <>
+            end>
+        end
+      end
+    end
+  end
+  inherited pnlTopo: TPanel
+    inherited pnlFiltro: TPanel
+      inherited pnlFiltroDatas: TPanel
+        inherited lblTituloFiltroDatas: TLabel
+          Visible = False
+        end
+        inherited edtDtaIni: TJvDateEdit
+          Visible = False
+        end
+        inherited edtDtaFin: TJvDateEdit
+          Visible = False
+        end
+      end
+      inherited pnlNomeTela: TPanel
+        inherited lblNomeTela: TLabel
+          Width = 77
+          Height = 28
+          Caption = 'Lista Filial'
+          ExplicitWidth = 77
+        end
+      end
+    end
+  end
+  inherited pnlRodapeBotoes: TPanel
+    inherited pnlBtnNovo: TPanel
+      inherited btnNovo: TSpeedButton
+        OnClick = btnNovoClick
+      end
+    end
+  end
+  inherited DS_Dados: TDataSource
+    DataSet = ServiceCadastro.QRY_Filial
+  end
+end

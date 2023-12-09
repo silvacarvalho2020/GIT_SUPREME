@@ -1,0 +1,43 @@
+inherited ViewRegrasTestes: TViewRegrasTestes
+  Caption = 'ViewRegrasTestes'
+  TextHeight = 21
+  object JvDBCalcEdit: TJvDBCalcEdit
+    Left = 392
+    Top = 186
+    Width = 208
+    Height = 29
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    Flat = False
+    ParentFlat = False
+    ButtonFlat = True
+    ClickKey = 0
+    DisplayFormat = ',0.00'
+    FormatOnEditing = True
+    ImageKind = ikCustom
+    ShowButton = False
+    TabOrder = 0
+    ClipboardCommands = []
+    DecimalPlacesAlwaysShown = True
+    DataField = 'VALORINICIAL'
+  end
+  object JvCalcEdit: TJvCalcEdit
+    Left = 416
+    Top = 306
+    Width = 208
+    Height = 29
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    Flat = False
+    ParentFlat = False
+    ButtonFlat = True
+    ClickKey = 0
+    DisplayFormat = ',0.00'
+    FormatOnEditing = True
+    ImageKind = ikCustom
+    ShowButton = False
+    TabOrder = 1
+    ClipboardCommands = []
+    DecimalPlacesAlwaysShown = True
+  end
+end

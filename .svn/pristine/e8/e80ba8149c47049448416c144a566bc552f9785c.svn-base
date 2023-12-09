@@ -1,0 +1,108 @@
+inherited ViewPesquisaCidades: TViewPesquisaCidades
+  Caption = 'ViewPesquisaCidades'
+  ClientHeight = 550
+  ClientWidth = 800
+  OnShow = FormShow
+  ExplicitLeft = -99
+  ExplicitWidth = 800
+  ExplicitHeight = 550
+  TextHeight = 15
+  inherited pnlTopo: TPanel
+    Width = 800
+    ExplicitWidth = 800
+    inherited pnlBtnFechar: TPanel
+      Left = 724
+      ExplicitLeft = 724
+    end
+    inherited pnlDadosTitulo: TPanel
+      Width = 724
+      ExplicitWidth = 724
+      inherited pnlInfoTitulo: TPanel
+        Width = 169
+        ExplicitWidth = 169
+        inherited lblTituloTela: TLabel
+          Width = 153
+          Caption = 'LISTA DE CIDADES'
+          ExplicitWidth = 153
+        end
+      end
+    end
+    inherited pnlLineTitulo: TPanel
+      Width = 800
+      ExplicitWidth = 800
+    end
+  end
+  inherited pnlRodapeCadastro: TPanel
+    Top = 510
+    Width = 800
+    ExplicitTop = 510
+    ExplicitWidth = 800
+    inherited pnlBtnCancelar: TPanel
+      Left = 532
+      ExplicitLeft = 532
+      inherited btnCancelar: TSpeedButton
+        ExplicitWidth = 121
+      end
+    end
+    inherited pnlBtnSalvar: TPanel
+      Left = 657
+      ExplicitLeft = 657
+    end
+  end
+  inherited pnlFiltro: TPanel
+    Width = 800
+    ExplicitWidth = 800
+    inherited pnlPesquisa: TPanel
+      Width = 798
+      ExplicitWidth = 798
+      inherited pnlImgPesquisa: TPanel
+        Left = 766
+        ExplicitLeft = 766
+      end
+      inherited edtPesquisa: TEdit
+        Width = 766
+        ExplicitWidth = 766
+      end
+    end
+  end
+  inherited DBG_ListaDados: TDBGridEh
+    Width = 790
+    Height = 440
+    Columns = <
+      item
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'IDCIDADE'
+        Footers = <>
+        Title.Caption = 'C'#243'digo'
+        Width = 64
+      end
+      item
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'MUNICIPIO'
+        Footers = <>
+        Title.Caption = 'Cidade / Munic'#237'pio'
+        Width = 369
+      end
+      item
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'UF'
+        Footers = <>
+        Width = 62
+      end
+      item
+        CellButtons = <>
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'CODMUNICIPIOIBGE'
+        Footers = <>
+        Title.Caption = 'C'#243'digo IBGE'
+        Width = 97
+      end>
+  end
+end
